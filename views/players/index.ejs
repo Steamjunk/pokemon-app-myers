@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer Page</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kufam&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Welcome Pokemon Trainers</h1>
+    <nav>
+        <% if(loggedInPlayer) { %>
+            <a href="/players/<%=loggedInPlayer.id%>"><%=loggedInPlayer.username%>'s Page</a>
+            <a href="/teams">Teams</a>
+
+        <% } else { %>
+            <a href="/players" class='current-page'>Trainers Page</a>
+            <a href="/players/signup">Sign Up</a>
+            <a href="/players/login">Login</a>
+            <a href="/teams">Teams</a>
+        <% } %>
+    </nav>
+
+    <% if(loggedInPlayer) { %>
+        <h2>Logged in as <%=loggedInPlayer.username%></h2>
+    <% } else { %>
+        <h2>Not Logged In</h2>
+    <% } %>
+
+    <h3>Number of Trainers: <%=players.length%></h3>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=pokemon.name%> Page</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kufam&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Who's that Pokemon?</h1>
+    <nav>
+        <a href="/pokemon">Home Page</a>
+    </nav>
+
+    <div class='pokemon-show'>
+        <h2><%=pokemon.name%></h2>
+
+        <ul class='type-list'>
+            <li class='type <%=pokemon.type1%>'>
+                <%=pokemon.type1%>
+            </li>
+            <% if(pokemon.type2) { %>
+            <li class='type <%=pokemon.type2%>'>
+                <%=pokemon.type2%>
+            </li>
+            <% } %>
+        </ul>
+    
+        <img class="main-image" src="<%=pokemon.img%>" alt="<%=pokemon.name%> image">
+        <form action="/pokemon/<%=pokemon.id%>?_method=DELETE" method="POST">
+            <input type="submit" value='Remove From Pokedex' />
+        </form>
+
+        <h3>Player's who have already caught this Pokemon</h3>
+        <ul>
+            <% for(let i = 0 ; i < pokemon.Players.length ; i++) { %>
+                <li>
+                    <a href="/players/<%=pokemon.Players[i].id%>"><%=pokemon.Players[i].name%></a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pokemon</title>
+
+    <link rel="stylesheet" href="/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kufam&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Edit Pokemon</h1>
+    <nav>
+        <a href="/pokemon">Home Page</a>
+    </nav>
+    <br>
+
+    <form action='/pokemon/<%=pokemon.id%>?_method=PUT' method="POST">
+        Name: <input type="text" name="name" value="<%=pokemon.name%>" />
+        Image Url: <input type="text" name="img" value="<%=pokemon.img%>" />
+        <select name="player">
+            <% for(let i = 0 ; i < players.length ; i++) { %>
+                <option value="<%=players[i].id%>"><%=players[i].name%></option>
+            <% } %>
+        </select>
+        
+        <input type="submit" value="Edit Pokemon" />
+    </form>
+</body>
+</html>
